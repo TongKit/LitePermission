@@ -46,7 +46,7 @@ class LocationPermissionInterceptor(var context: Context) : PermissionRequestInt
                 return
             }
 
-            if (canRequestForegroundLocationPermission() && !canRequestBackgroundLocationPermission()) {//大于Android6，小于Android10
+            if (!canRequestBackgroundLocationPermission()) {//大于Android6，小于Android10。ACCESS_BACKGROUND_LOCATION权限是在Android10新增的，如果小于Android10，可以移除这个权限
                 chain.getSpecialPermissions().remove(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
             }
 
@@ -144,14 +144,14 @@ class LocationPermissionInterceptor(var context: Context) : PermissionRequestInt
     }
 
     //处理权限请求结果的数据。
-    private fun parseRequestPermission(chain: PermissionRequestInterceptor.Chain, permissionResult: Map<String, Boolean>?, permissionValue: Boolean = true): MutableMap<String, Boolean> {
-        var tempPermissionResult = mutableMapOf<String, Boolean>()
+    private fun parseRequestPermission(chain: PermissionRequestInterceptor.Chain, permissionResult: Map<String, Boolean>?, permissionValue: Boolean = true): HashMap<String, Boolean> {
+        val tempPermissionResult = hashMapOf<String, Boolean>()
         if (permissionResult != null && permissionResult is MutableMap) {
-            tempPermissionResult = permissionResult
+            tempPermissionResult.putAll(permissionResult)
         }
         if (chain.getSpecialPermissions().size != tempPermissionResult.size) {//申请的权限列表和返回的权限列表不一样：此处表示申请的多个权限中，已有权限在之前已被授权。
             chain.getSpecialPermissions().forEach { permission ->
-                if (!tempPermissionResult.contains(permission)) {
+                if (!tempPermissionResult.containsKey(permission)) {
                     tempPermissionResult[permission] = permissionValue//将之前已被授权的权限放到结果中，进行统一处理并返回。
                 }
             }

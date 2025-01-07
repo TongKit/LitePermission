@@ -36,7 +36,10 @@ object LitePermission {
         "android.permission.BIND_ACCESSIBILITY_SERVICE",//允许应用提供无障碍服务，帮助有特殊需求的用户使用设备
         "android.permission.BIND_NOTIFICATION_LISTENER_SERVICE",//允许应用访问设备的通知，以便进行相关处理
         "android.permission.BIND_VPN_SERVICE",//允许应用提供虚拟专用网络（VPN）服务
-        "android.permission.PACKAGE_USAGE_STATS"//允许应用获取其他应用的使用情况统计信息
+        "android.permission.PACKAGE_USAGE_STATS",//允许应用获取其他应用的使用情况统计信息
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",//定位权限需要开启定位服务，所以将定位权限也放到特殊权限中了。
     )
 
     //自定义权限拦截器
