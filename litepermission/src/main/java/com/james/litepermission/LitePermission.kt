@@ -65,6 +65,7 @@ object LitePermission {
      * 由于系统更新而框架没有及时更新等原因。如果此时新增了一个特殊权限，需要将这个特殊权限放到[LitePermission.specialPermissions]集合中。
      * 在请求特殊权限时，会根据判断，将此请求的特殊权限放到[PermissionBuilder.specialPermissions]中，便于在特殊权限拦截器中使用。
      */
+    @JvmStatic
     fun addSpecialPermission(permission: String) {
         if (!specialPermissions.contains(permission)) {
             specialPermissions.add(permission)
@@ -74,6 +75,7 @@ object LitePermission {
     /**
      * 是否是特殊权限。
      */
+    @JvmStatic
     fun isSpecialPermission(permission: String): Boolean {
         return specialPermissions.contains(permission)
     }
