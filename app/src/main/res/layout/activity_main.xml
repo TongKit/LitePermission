@@ -19,4 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="申请访问设备上的所有文件权限" />
+
+    <Button
+        android:id="@+id/btLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="申请定位权限" />
+
+
 </LinearLayout>

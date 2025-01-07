@@ -24,17 +24,29 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btCamera).setOnClickListener {
             LitePermission.builder(this).permissions(Manifest.permission.CAMERA).request(object : PermissionCallback {
-                    override fun onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
-                        Log.d(TAG, "allGranted = $allGranted")
-                    }
-                })
+                override fun onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
+                    Log.d(TAG, "allGranted = $allGranted")
+                }
+            })
         }
         findViewById<Button>(R.id.btAllFile).setOnClickListener {
             LitePermission.builder(this).permissions(Manifest.permission.MANAGE_EXTERNAL_STORAGE).request(object : PermissionCallback {
-                    override fun onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
-                        Log.d(TAG, "allGranted = $allGranted")
-                    }
-                })
+                override fun onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
+                    Log.d(TAG, "allGranted = $allGranted")
+                }
+            })
         }
+
+        findViewById<Button>(R.id.btLocation).setOnClickListener {
+            LitePermission.builder(this).permissions(Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            ).request(object : PermissionCallback {
+                override fun onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
+                    Log.d(TAG, "allGranted = $allGranted")
+                }
+            })
+        }
+
     }
 }
