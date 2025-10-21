@@ -26,5 +26,10 @@
         android:layout_height="wrap_content"
         android:text="申请定位权限" />
 
+    <Button
+        android:id="@+id/btJava"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="java调用实例" />
 
 </LinearLayout>

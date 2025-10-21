@@ -111,7 +111,7 @@ class RealPermissionRequestChain(
                     }
                 }
             }
-            callback?.onResult(isAllGranted, grantedList, deniedList, doNotAskAgainList)
+            callback?.onResult(PermissionRequestResult(isAllGranted, grantedList, deniedList, doNotAskAgainList))
             return
         }
         nowInterceptor = interceptors[interceptorIndex]

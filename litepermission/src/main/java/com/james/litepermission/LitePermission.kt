@@ -29,14 +29,11 @@ import com.james.litepermission.interceptor.PermissionRequestInterceptor
  * @Description: 权限管理类。
  *
  * 使用实例代码如下：
- * LitePermission.builder(this)
+ *               LitePermission.builder(this)
  *                  .permissions(Manifest.permission.CAMERA)
- *                  .request(object : PermissionCallback {
- *                      @Override
- *                      public void onResult(allGranted: Boolean, grantedList: List<String>, deniedList: List<String>, doNotAskAgainList: List<String>) {
- *
- *                      }
- *                  })
+ *                  .request {
+ *                     Log.d(TAG, "allGranted = ${it.allGranted}")
+ *                 }
  */
 object LitePermission {
 
